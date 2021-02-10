@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+ </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\QianChuang.CompManage.Model\QianChuang.CompManage.Model.csproj" />
+  </ItemGroup >
+</Project>
+
