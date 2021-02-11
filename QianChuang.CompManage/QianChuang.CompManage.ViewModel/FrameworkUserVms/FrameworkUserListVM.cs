@@ -1,8 +1,10 @@
+// WTM默认页面 Wtm buidin page
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using QianChuang.CompManage.Model.Framework;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
@@ -77,10 +79,10 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
 
     public class FrameworkUser_View : FrameworkUser
     {
-        [Display(Name = "Role")]
+        [Display(Name = "_Admin.Role")]
         public string RoleName_view { get; set; }
 
-        [Display(Name = "Group")]
+        [Display(Name = "_Admin.Group")]
         public string GroupName_view { get; set; }
     }
 }

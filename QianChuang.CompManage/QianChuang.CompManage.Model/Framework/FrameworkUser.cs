@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkingTec.Mvvm.Core;
 
-namespace WalkingTec.Mvvm.Core
+namespace QianChuang.CompManage.Model.Framework
 {
     /// <summary>
     /// FrameworkUser
@@ -33,5 +36,30 @@ namespace WalkingTec.Mvvm.Core
         [Display(Name = "_Admin.ZipCode")]
         [RegularExpression("^[0-9]{6,6}$", ErrorMessage = "Validate.{0}formaterror")]
         public string ZipCode { get; set; }
+
+        //public virtual List<FrameworkOrg> FrameworkOrgs { get; set; }
+
+        /*
+         * 一个用户必须属于一个组织，系统固定两个默认组织：
+         * 1.乾创组织
+         * 2.客户组织
+         */
+        [Display(Name = "组织")]
+        [Required]
+        public Guid OrgId { get; set; }
+        [Display(Name = "组织")]
+        public FrameworkOrg Org { get; set; }
+
+        public List<FrameworkOrg> Orgs { get; set; }
+        /*
+         * 这个主要是针对销售的
+         * 销售可以组建团队
+         */
+        [Display(Name = "团队")]
+        public Guid? TeamId { get; set; }
+        [Display(Name = "团队")]
+        public FrameworkTeam Team { get; set; }
+
+        public FrameworkTeam? ManageTeam { get; set; }
     }
 }

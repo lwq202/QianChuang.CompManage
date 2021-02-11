@@ -62,10 +62,10 @@ namespace QianChuang.CompManage
                 options.ReloadUserFunc = ReloadUser;
             });
 
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "ClientApp/build";
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,21 +92,21 @@ namespace QianChuang.CompManage
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                if (env.IsDevelopment())
-                {
-                    endpoints.MapToVueCliProxy(
-                        "{*path}",
-                        new SpaOptions { SourcePath = "ClientApp" },
-                        npmScript: "start",
-                        regex: "Compiled successfully");
-                }
+                //if (env.IsDevelopment())
+                //{
+                //    endpoints.MapToVueCliProxy(
+                //        "{*path}",
+                //        new SpaOptions { SourcePath = "ClientApp" },
+                //        npmScript: "start",
+                //        regex: "Compiled successfully");
+                //}
             });
             
             app.UseWtmContext();
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-            });
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+            //});
         }
 
         /// <summary>

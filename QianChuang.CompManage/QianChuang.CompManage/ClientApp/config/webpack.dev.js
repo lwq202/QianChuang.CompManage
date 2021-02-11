@@ -1,9 +1,17 @@
-﻿const webpack = require("webpack");
+﻿/*
+ * @Author: your name
+ * @Date: 2021-02-10 09:43:15
+ * @LastEditTime: 2021-02-11 15:04:23
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ClientApp\config\webpack.dev.js
+ */
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const baseConfig = require("./webpack.base");
 const { utils } = require("./webpack-util");
 const HOST = "localhost";
-const PORT = 8051;
+const PORT = 8099;
 
 module.exports = merge(baseConfig, {
   mode: "development",
@@ -22,11 +30,11 @@ module.exports = merge(baseConfig, {
     openPage: "index.html",
     proxy: {
       "/api": {
-        target: "http://localhost:5296/",
+        target: "http://localhost:5000/",
         changeOrigin: true
       },
       "/_framework": {
-        target: "http://localhost:5296/",
+        target: "http://localhost:5000/",
         changeOrigin: true
       }
     }

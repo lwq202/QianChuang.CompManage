@@ -1,7 +1,9 @@
+// WTM默认页面 Wtm buidin page
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using QianChuang.CompManage.Model.Framework;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
@@ -86,7 +88,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.DataPrivilegeVMs
             if (Searcher.DpType == DpTypeEnum.User)
             {
                 query = DC.Set<DataPrivilege>()
-                    .Join(DC.Set<FrameworkUserBase>(), ok => ok.UserCode, ik => ik.ITCode, (dp, user) => new { dp = dp, user = user })
+                    .Join(DC.Set<FrameworkUser>(), ok => ok.UserCode, ik => ik.ITCode, (dp, user) => new { dp = dp, user = user })
                     .CheckContain(Searcher.Name, x => x.user.Name)
                     .CheckContain(Searcher.TableName, x => x.dp.TableName)
                     .GroupBy(x => new { x.user.Name, x.user.ITCode, x.dp.TableName }, x => x.dp.RelateId)
@@ -122,17 +124,14 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.DataPrivilegeVMs
         }
     }
 
-    /// <summary>
-    /// 如果需要显示树类型的列表需要继承ITreeData`T`接口，并实现Children,Parent,ParentID属性
-    /// </summary>
     public class DataPrivilege_ListView : BasePoco
     {
-        [Display(Name = "DpTargetName")]
+        [Display(Name = "_Admin.DpTargetName")]
         public string Name { get; set; }
         public string TargetId { get; set; }
-        [Display(Name = "DataPrivilegeName")]
+        [Display(Name = "_Admin.DataPrivilegeName")]
         public string TableName { get; set; }
-        [Display(Name = "DataPrivilegeCount")]
+        [Display(Name = "_Admin.DataPrivilegeCount")]
         public int RelateIDs { get; set; }
         public int DpType { get; set; }
         public string DomainName { get; set; }

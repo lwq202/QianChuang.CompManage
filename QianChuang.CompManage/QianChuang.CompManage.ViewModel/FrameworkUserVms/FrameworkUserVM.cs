@@ -1,3 +1,4 @@
+// WTM默认页面 Wtm buidin page
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -5,6 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using QianChuang.CompManage.Model.Framework;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
@@ -17,9 +19,9 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
 
         [JsonIgnore]
         public List<ComboSelectListItem> AllGroups { get; set; }
-        [Display(Name = "Role")]
+        [Display(Name = "_Admin.Role")]
         public List<string> SelectedRolesCodes { get; set; }
-        [Display(Name = "Group")]
+        [Display(Name = "_Admin.Group")]
         public List<string> SelectedGroupCodes { get; set; }
 
 

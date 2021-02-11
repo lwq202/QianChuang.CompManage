@@ -1,3 +1,4 @@
+// WTM默认页面 Wtm buidin page
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,6 +7,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkGroupVMs;
 using WalkingTec.Mvvm.Core.Extensions;
 using System.Threading.Tasks;
+using QianChuang.CompManage.Model.Framework;
 
 namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.DataPrivilegeVMs
 {
@@ -75,7 +77,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.DataPrivilegeVMs
                 }
                 else
                 {
-                    var user = DC.Set<FrameworkUserBase>().Where(x => x.ITCode == Entity.UserCode).FirstOrDefault();
+                    var user = DC.Set<FrameworkUser>().Where(x => x.ITCode == Entity.UserCode).FirstOrDefault();
                     if (user == null)
                     {
                         MSD.AddModelError("Entity.UserCode", Localizer["Sys.CannotFindUser", Entity.UserCode]);

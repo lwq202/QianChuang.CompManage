@@ -29,10 +29,10 @@
                     <a v-if="isDev" target="_blank" href="https://wtmdoc.walkingtec.cn/">
                         <el-dropdown-item>{{$t('navbar.doc')}}</el-dropdown-item>
                     </a>
-                    <a v-if="isDev" target="_blank" href="http://localhost:5296/_codegen?ui=vue">
+                    <a v-if="isDev" target="_blank" href="http://localhost:5000/_codegen?ui=vue">
                         <el-dropdown-item>{{$t('navbar.generation')}}</el-dropdown-item>
                     </a>
-                    <a v-if="isDev" target="_blank" href="http://localhost:5296/swagger">
+                    <a v-if="isDev" target="_blank" href="http://localhost:5000/swagger">
                         <el-dropdown-item>{{$t('navbar.api')}}</el-dropdown-item>
                     </a>
                     <a @click="onOpenPassword">

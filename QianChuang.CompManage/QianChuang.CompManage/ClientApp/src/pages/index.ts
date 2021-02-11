@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 页面集合
  */
 export default {
@@ -38,7 +38,28 @@ export default {
     controller: "WalkingTec.Mvvm.Admin.Api,DataPrivilege",
     icon: "el-icon-odometer"
   }
+
+, frameworkorg: {
+    name: '组织管理',
+    path: '/frameworkorg',
+    controller: 'QianChuang.CompManage.Controllers,FrameworkOrg'
+    }
+
+, frameworkteam: {
+    name: '团队管理',
+    path: '/frameworkteam',
+    controller: 'QianChuang.CompManage.Controllers,FrameworkTeam'
+    }
+
+, frameworklog: {
+    name: '运行日志',
+    path: '/frameworklog',
+    controller: 'QianChuang.CompManage.Controllers,FrameworkLog'
+    }
 /**WTM**/
+ 
+ 
+ 
  
 
 };

@@ -1,9 +1,10 @@
+// WTM默认页面 Wtm buidin page
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using QianChuang.CompManage.Model.Framework;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using WalkingTec.Mvvm.Core.Support.Json;
@@ -126,7 +127,6 @@ namespace WalkingTec.Mvvm.Admin.Api
             return vm.GetExportData();
         }
 
-        #region 未设置页面
         [ActionDescription("_Admin.UnsetPages")]
         [HttpGet("[action]")]
         public string UnsetPages()
@@ -134,19 +134,16 @@ namespace WalkingTec.Mvvm.Admin.Api
             var vm = Wtm.CreateVM<FrameworkActionListVM>();
             return vm.GetJson();
         }
-        #endregion
 
-        #region 刷新菜单
         [ActionDescription("_Admin.RefreshMenu")]
         [HttpGet("[action]")]
         public async Task<ActionResult> RefreshMenu()
         {
             Cache.Delete("FFMenus");
-            var userids = DC.Set<FrameworkUserBase>().Select(x => x.ID.ToString().ToLower()).ToArray();
+            var userids = DC.Set<FrameworkUser>().Select(x => x.ID.ToString().ToLower()).ToArray();
             await Wtm.RemoveUserCache(userids);
             return Ok(Localizer["Sys.OprationSuccess"]);
         }
-        #endregion
 
         [ActionDescription("GetActionsByModelId")]
         [HttpGet("GetActionsByModel")]

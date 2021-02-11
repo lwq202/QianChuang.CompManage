@@ -1,4 +1,6 @@
+// WTM默认页面 Wtm buidin page
 using System.Collections.Generic;
+using QianChuang.CompManage.Model.Framework;
 using WalkingTec.Mvvm.Core;
 
 namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
