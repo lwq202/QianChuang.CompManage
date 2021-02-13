@@ -36,6 +36,7 @@ var Utils = /** @class */ (function () {
         this.label = this.generateLabelComponent;
         this.datePicker = this.generateDatePickerComponent;
         this.transfer = this.generateTransferComponent;
+        this.tinymce = this.generateTinymceComponent;
     }
     /**
      * formItem 继承vue组件this
@@ -100,6 +101,25 @@ var Utils = /** @class */ (function () {
         {slot}
       </el-input>);
     };
+    
+    Utils.prototype.generateTinymceComponent=function(h, option, vm){
+        var _t = vm || this;
+        var style = option.style, props = option.props, slot = option.slot, key = option.key;
+        var on = translateEvents(option.events, _t);
+        var compData = {
+            directives: __spreadArrays((option.directives || []), [vEdit(_t)]),
+            on: on,
+            props: __assign(__assign({}, displayProp(_t)), props),
+            style: style,
+            slot: slot,
+        };
+        var placeholder = "" + _t.$t('form.pleaseEnter') + option.label;
+        if (props && props.placeholder) {
+            placeholder = props.placeholder;
+        }
+        var vmodelData = sourceItem(_t.sourceFormData || _t.formData, key);
+        return (<tinymce v-model={vmodelData[key]} {...compData} placeholder={placeholder} />);
+    }
     Utils.prototype.generateSelectComponent = function (h, option, vm) {
         var _t = vm || this;
         var style = option.style, props = option.props, key = option.key, mapKey = option.mapKey;
@@ -395,6 +415,7 @@ var Utils = /** @class */ (function () {
         var value = getMapKeyModel(_t, key, mapKey);
         return <el-transfer value={value} {...compData}></el-transfer>;
     };
+
     return Utils;
 }());
 export default Utils;

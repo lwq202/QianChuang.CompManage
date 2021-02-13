@@ -9,5 +9,10 @@
   <ItemGroup>
     <PackageReference Include="WalkingTec.Mvvm.Core" Version="5.0.4" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="ProductForm\" />
+  </ItemGroup>
 </Project>
 

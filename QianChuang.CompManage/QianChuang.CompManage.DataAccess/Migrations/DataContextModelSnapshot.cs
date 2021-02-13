@@ -55,7 +55,7 @@ namespace QianChuang.CompManage.DataAccess.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("FrameworkLog");
+                    b.ToTable("FrameworkLogs");
                 });
 
             modelBuilder.Entity("QianChuang.CompManage.Model.Framework.FrameworkOrg", b =>
@@ -254,6 +254,152 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("FrameworkUsers");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductArea", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AreaName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ProductArea");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductAreaInfo", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AreaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("HasProduct")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IgnoreFields")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InfoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("InfoId");
+
+                    b.ToTable("ProductAreaInfos");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductInfo", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FormCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Remark")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("ProductInfos");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.ActionLog", b =>
@@ -761,6 +907,36 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                     b.Navigation("Team");
                 });
 
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductAreaInfo", b =>
+                {
+                    b.HasOne("QianChuang.CompManage.Model.Product.ProductArea", "Area")
+                        .WithMany("ProductAreaInfos")
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("QianChuang.CompManage.Model.Product.ProductInfo", "Info")
+                        .WithMany()
+                        .HasForeignKey("InfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("Info");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductInfo", b =>
+                {
+                    b.HasOne("WalkingTec.Mvvm.Core.FileAttachment", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkMenu", b =>
                 {
                     b.HasOne("WalkingTec.Mvvm.Core.FrameworkMenu", "Parent")
@@ -796,6 +972,11 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                     b.Navigation("ManageTeam");
 
                     b.Navigation("Orgs");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Product.ProductArea", b =>
+                {
+                    b.Navigation("ProductAreaInfos");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkMenu", b =>

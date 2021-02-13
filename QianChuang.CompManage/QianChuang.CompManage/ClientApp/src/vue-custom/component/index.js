@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-11 18:27:45
+ * @LastEditTime: 2021-02-12 18:27:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ClientApp\src\vue-custom\component\index.js
+ */
 // 内容布局
 import Card from "@/components/layout/components/Card/index.vue";
 // 弹出框

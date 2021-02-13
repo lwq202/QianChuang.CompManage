@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using QianChuang.CompManage.Model.Const;
 using QianChuang.CompManage.Model.Framework;
+using QianChuang.CompManage.Model.Product;
 using WalkingTec.Mvvm.Core;
 
 namespace QianChuang.CompManage.DataAccess
@@ -25,6 +26,12 @@ namespace QianChuang.CompManage.DataAccess
         public DbSet<FrameworkLog> FrameworkLogs { get; set; }
         #endregion
 
+        #region 产品信息表
+
+        public DbSet<ProductArea> ProductAreas { get; set; }
+        public DbSet<ProductInfo> ProductInfos { get; set; }
+        public DbSet<ProductAreaInfo> ProductAreaInfos { get; set; }
+        #endregion
 
         public DataContext(string cs, DBTypeEnum dbtype)
             : base(cs, dbtype)
@@ -143,6 +150,8 @@ namespace QianChuang.CompManage.DataAccess
                 LinkPhone = null
             });
             #endregion
+
+
         }
 
 

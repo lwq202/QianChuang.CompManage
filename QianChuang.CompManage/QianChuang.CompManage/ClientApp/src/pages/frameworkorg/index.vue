@@ -53,7 +53,7 @@ export default class Index extends Vue {
                     type: "input"
               },
                 "SOrgName":{
-                    label: "组织名称简称",
+                    label: "组织简称",
                     rules: [],
                     type: "input"
               },

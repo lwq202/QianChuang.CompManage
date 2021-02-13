@@ -36,6 +36,7 @@ export default class Utils {
   public label = this.generateLabelComponent;
   public datePicker = this.generateDatePickerComponent;
   public transfer = this.generateTransferComponent;
+  public tinymce = this.generateTinymceComponent;
 
   /**
    * formItem 继承vue组件this
@@ -119,6 +120,33 @@ export default class Utils {
     );
   }
 
+
+  private generateTinymceComponent(h, option, vm?) {
+    const _t = vm || this;
+    const { style, props, slot, key } = option;
+    const on = translateEvents(option.events, _t);
+    const compData = {
+      directives: [...(option.directives || []), vEdit(_t)],
+      on,
+      props: { ...displayProp(_t), ...props },
+      style,
+      slot,
+    };
+    let placeholder = `${_t.$t('form.pleaseEnter')}${option.label}`;
+    if (props && props.placeholder) {
+      placeholder = props.placeholder;
+    }
+    let vmodelData = sourceItem(_t.sourceFormData || _t.formData, key);
+    return (
+      <tinymce
+        v-model={vmodelData[key]}
+        {...compData}
+        placeholder={placeholder}
+      >
+        {slot}
+      </tinymce>
+    );
+  }
   private generateSelectComponent(h, option, vm?) {
     const _t = vm || this;
     const { style, props, key, mapKey } = option;

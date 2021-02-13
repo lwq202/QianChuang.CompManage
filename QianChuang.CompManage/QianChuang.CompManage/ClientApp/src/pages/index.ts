@@ -56,7 +56,21 @@ export default {
     path: '/frameworklog',
     controller: 'QianChuang.CompManage.Controllers,FrameworkLog'
     }
+
+, productinfo: {
+    name: '产品信息',
+    path: '/productinfo',
+    controller: 'QianChuang.CompManage.Controllers,ProductInfo'
+    }
+
+, productarea: {
+    name: '园区管理',
+    path: '/productarea',
+    controller: 'QianChuang.CompManage.Controllers,ProductArea'
+    }
 /**WTM**/
+ 
+ 
  
  
  

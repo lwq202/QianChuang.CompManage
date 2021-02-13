@@ -46,6 +46,9 @@ export default class DialogBox extends Vue {
     // 事件集合
     @Prop({ type: Object, default: () => {} })
     events;
+    // 弹出模式
+    @Prop({ type:Boolean,default:false})
+    rightDialog;
     // 是否全屏
     isFullscreen: Boolean = false;
     // 事件
@@ -57,7 +60,8 @@ export default class DialogBox extends Vue {
      * 弹出模式
      */
     get isDialog() {
-        return SettingsModule.isDialog;
+        return this.rightDialog?false: SettingsModule.isDialog; 
+        //return SettingsModule.isDialog;
     }
     // title
     get titlePvt() {
