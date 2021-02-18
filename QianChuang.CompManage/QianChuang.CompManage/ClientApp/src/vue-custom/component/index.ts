@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-11 18:27:45
+ * @LastEditTime: 2021-02-13 13:04:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ClientApp\src\vue-custom\component\index.ts
+ */
 // 内容布局
 import Card from "@/components/layout/components/Card/index.vue";
 // 弹出框
@@ -18,6 +26,8 @@ import CreateForm from "@/components/page/CreateForm";
 import RenderView from "@/components/page/RenderView";
 // icon
 import Icon from "@/components/page/Icon/index.vue";
+//富文本编辑器
+import Tinymce from "@/components/page/Tinymce/index.vue";
 
 export default [
   { key: "Card", value: Card },
@@ -28,6 +38,7 @@ export default [
   { key: "WtmFormItem", value: FormItem },
   { key: "WtmFlexBox", value: FlexBox },
   { key: "WtmCreateForm", value: CreateForm },
+  { key: "Tinymce", value: Tinymce },
   { key: "WtmRenderView", value: RenderView },
   { key: "WtmIcon", value: Icon }
 ];

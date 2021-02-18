@@ -60,6 +60,28 @@
     "Url": "/frameworklog"
     }
 
+    
+  ,{
+    "ParentId": null,
+    "Id": "301f84d3-5a77-4b30-92c4-9c723ed29311",
+    "Text": "产品管理",
+    "Url": null
+  }
+,{
+    "Id": "f5eaff60-9ea1-467a-afc6-7d4d68741507",
+    "ParentId": "301f84d3-5a77-4b30-92c4-9c723ed29311",
+    "Text": "产品信息",
+    "Url": "/productinfo"
+    }
+,{
+    "Id": "6aaba90c-5599-4eb3-b7f7-3e70615a45f7",
+    "ParentId": "301f84d3-5a77-4b30-92c4-9c723ed29311",
+    "Text": "园区管理",
+    "Url": "/productarea"
+    }
+
+
+
 
 
 ]

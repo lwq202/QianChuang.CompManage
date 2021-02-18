@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-11 18:27:45
+ * @LastEditTime: 2021-02-13 12:46:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ClientApp\src\index.ts
+ */
 import Vue from "vue";
 import ElementUI from "element-ui";
 import i18n from "@/lang";
@@ -43,6 +51,7 @@ component.forEach(item => {
 
 
 Vue.config.productionTip = false;
+
 
 new Vue({
   router,

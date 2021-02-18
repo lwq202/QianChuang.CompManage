@@ -1,4 +1,12 @@
-﻿<template>
+﻿<!--
+ * @Author: your name
+ * @Date: 2021-02-11 18:27:45
+ * @LastEditTime: 2021-02-11 18:42:15
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \ClientApp\src\pages\frameworkorg\views\dialog-form.vue
+-->
+<template>
     <wtm-dialog-box :is-show.sync="isShow" :status="status" :events="formEvent">
         <wtm-create-form :ref="refName" :status="status" :options="formOptions" ></wtm-create-form>
     </wtm-dialog-box>
@@ -39,7 +47,7 @@ export default class Index extends Vue {
                     type: "input"
             },
              "Entity.SOrgName":{
-                 label: "组织名称简称",
+                 label: "组织简称",
                  rules: [{ required: true, message: "组织名称简称"+this.$t("form.notnull"),trigger: "blur" }],
                     type: "input"
             },

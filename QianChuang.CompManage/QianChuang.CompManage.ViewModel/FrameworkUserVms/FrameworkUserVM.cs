@@ -36,6 +36,8 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
         public override DuplicatedInfo<FrameworkUser> SetDuplicatedCheck()
         {
             var rv = CreateFieldsInfo(SimpleField(x => x.ITCode));
+            var rv1 = CreateFieldsInfo(SimpleField(x => x.Code));
+            rv.AddGroup(rv1.Groups[0]);
             return rv;
         }
 
@@ -80,6 +82,13 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
                         };
                         DC.AddEntity(g);
                     }
+                }
+
+                if (Entity.OrgId==Guid.Empty)//不存在组织信息的时候，把当前用户的组织信息赋值给他
+                {
+                    var currentUser = await DC.Set<FrameworkUser>()
+                        .SingleOrDefaultAsync(a => a.ID.Equals(LoginUserInfo.UserId));
+                    Entity.OrgId = currentUser.OrgId;
                 }
                 Entity.IsValid = true;
                 Entity.Password = Utils.GetMD5String(Entity.Password);

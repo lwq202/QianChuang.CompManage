@@ -60,6 +60,8 @@ namespace QianChuang.CompManage
                 options.CsSelector = CSSelector;
                 options.FileSubDirSelector = SubDirSelector;
                 options.ReloadUserFunc = ReloadUser;
+                //设置用户权限
+                //options.DataPrivileges = DataPrivilegeSettings();
             });
 
             //services.AddSpaStaticFiles(configuration =>
@@ -131,6 +133,10 @@ namespace QianChuang.CompManage
         public List<IDataPrivilege> DataPrivilegeSettings()
         {
             List<IDataPrivilege> pris = new List<IDataPrivilege>();
+
+            //不同组织只能维护自己组织的数据
+            pris.Add(new DataPrivilegeInfo<FrameworkGroup>("组织",a=>a.GroupName));
+
             //Add data privilege to specific type
             //指定哪些模型需要数据权限
             return pris;
