@@ -61,5 +61,21 @@ namespace QianChuang.CompManage.Model.Framework
         public FrameworkTeam Team { get; set; }
 
         public FrameworkTeam? ManageTeam { get; set; }
+        private string _code;
+
+        [Display(Name = "编号")]
+        public string Code
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_code))
+                {
+                    _code = Code;
+                }
+
+                return _code;
+            }
+            set => _code = value;
+        }
     }
 }

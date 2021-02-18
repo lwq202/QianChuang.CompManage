@@ -36,6 +36,8 @@ namespace WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkUserVms
         public override DuplicatedInfo<FrameworkUser> SetDuplicatedCheck()
         {
             var rv = CreateFieldsInfo(SimpleField(x => x.ITCode));
+            var rv1 = CreateFieldsInfo(SimpleField(x => x.Code));
+            rv.AddGroup(rv1.Groups[0]);
             return rv;
         }
 

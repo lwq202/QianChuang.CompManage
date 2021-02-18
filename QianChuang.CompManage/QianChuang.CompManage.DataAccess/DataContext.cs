@@ -119,7 +119,28 @@ namespace QianChuang.CompManage.DataAccess
             {
                 ID = FrameworkConst.RoleBraceId,
                 RoleCode = "015",
-                RoleName = "支撑",
+                RoleName = "设立执行人",
+                CreateBy = "初始化数据",
+            });
+            modelBuilder.Entity<FrameworkRole>().HasData(new FrameworkRole()
+            {
+                ID = FrameworkConst.RoleCustomId,
+                RoleCode = "016",
+                RoleName = "客户",
+                CreateBy = "初始化数据",
+            });
+            modelBuilder.Entity<FrameworkRole>().HasData(new FrameworkRole()
+            {
+                ID = FrameworkConst.RoleAgentId,
+                RoleCode = "017",
+                RoleName = "代理商",
+                CreateBy = "初始化数据",
+            });
+            modelBuilder.Entity<FrameworkRole>().HasData(new FrameworkRole()
+            {
+                ID = FrameworkConst.RoleAccountingId,
+                RoleCode = "018",
+                RoleName = "主办会计",
                 CreateBy = "初始化数据",
             });
 
