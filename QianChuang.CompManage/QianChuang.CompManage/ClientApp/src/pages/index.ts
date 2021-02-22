@@ -68,7 +68,14 @@ export default {
     path: '/productarea',
     controller: 'QianChuang.CompManage.Controllers,ProductArea'
     }
+
+, form: {
+    name: '表单',
+    path: '/form',
+    controller: 'QianChuang.CompManage.Controllers,Form'
+    }
 /**WTM**/
+ 
  
  
  

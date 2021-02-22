@@ -1,0 +1,111 @@
+﻿<%-- 
+Author: yubaolee
+Description: 用于生成OpenAuth.Pro企业版前端包含头/明细的复杂vue界面，包括api和views
+--%>
+<%@ Template Language="C#" TargetLanguage="Text" Debug="True" OutputType="Normal"  %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+
+<%@ Assembly Name="Mono.Cecil" Path="..\Common" %>
+<%@ Assembly Name="ICSharpCode.NRefactory" Path="..\Common" %>
+<%@ Assembly Name="ICSharpCode.NRefactory.CSharp" Path="..\Common" %>
+
+<%@ Assembly Src="Internal\Model.cs" %>
+<%@ Assembly Src="Internal\Extensions.cs" %>
+<%@ Assembly Src="Internal\Generator.cs" %>
+<%@ Assembly Src="Internal\Parser.cs" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+
+<%@ Import Namespace="SchemaMapper" %>
+
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="1 头表信息"
+Description="头表" OnChanged="OnSourceDatabaseChanged"%>
+<%@ Property Name="DetailTable" Type="SchemaExplorer.TableSchema" Category="2 明细表信息"
+Description="明细表" %>
+
+<%@ Property Name="ModuleName"
+             Type="System.String"
+             Description="头模块名称，如：User" %>
+<%@ Property Name="directory"
+             Type="System.String"
+             Default=".\"
+             Optional="True"
+             Description="生成后代码存放的路径"
+             Editor="System.Windows.Forms.Design.FolderNameEditor, System.Design, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" %>
+
+<%@ Register Name="IndexVueClass"
+             Template="VueGenByTitleAndDetail\Index.vue.cst"
+             MergeProperties="True" %>
+<%@ Register Name="ApiClass"
+             Template="VueGenerate\api.js.cst"
+             MergeProperties="True" %>
+开始创建OpenAuth.Pro vue代码 ...
+<% Generate(); %>
+
+<script runat="template">
+    public void Generate()
+    {
+        Stopwatch watch = Stopwatch.StartNew();
+        string outputDirectory = Path.GetFullPath(directory);
+
+        CreateIndexVueClass();
+        CreateApiClass();
+        
+        watch.Stop();
+        Response.WriteLine("Generate Time: " + watch.ElapsedMilliseconds + " ms");
+    }
+
+     //创建视图,如views/stocks/index.vue
+     public void CreateIndexVueClass()
+    {
+        IndexVueClass generatedClass = this.Create<IndexVueClass>();
+        this.CopyPropertiesTo(generatedClass);
+
+        string generatedFile = Path.GetFullPath(directory) + "views\\"+ModuleName.ToLower()+"s\\index.vue";
+
+        generatedClass.ModuleName = ModuleName;
+        generatedClass.SourceTable = SourceTable;
+
+        Response.WriteLine(generatedFile);
+        generatedClass.RenderToFile(generatedFile, generatedFile, true);
+    }
+    
+    //创建视图,如api/stocks.js
+     public void CreateApiClass()
+    {
+        ApiClass generatedClass = this.Create<ApiClass>();
+        this.CopyPropertiesTo(generatedClass);
+
+        string generatedFile = Path.GetFullPath(directory) + "api\\"+ModuleName.ToLower()+"s.js";  //头接口
+
+        generatedClass.ModuleName = ModuleName;
+        generatedClass.SourceTable = SourceTable;
+
+        Response.WriteLine(generatedFile);
+        generatedClass.RenderToFile(generatedFile, generatedFile, true);
+        
+        //创建明细接口
+        string detailFile = Path.GetFullPath(directory) + "api\\"+this.DetailTable.Name.ToLower()+"s.js";  //明细接口
+        generatedClass.ModuleName = this.DetailTable.Name;
+        generatedClass.SourceTable = DetailTable;
+
+        Response.WriteLine(detailFile);
+        generatedClass.RenderToFile(detailFile, detailFile, true);
+    }
+
+
+    //更换数据源时，改变ModuleName
+    private void OnSourceDatabaseChanged(object sender, EventArgs e)
+    {
+        if (SourceTable == null)
+            return;
+            ModuleName = SourceTable.Name;
+    }
+
+</script>

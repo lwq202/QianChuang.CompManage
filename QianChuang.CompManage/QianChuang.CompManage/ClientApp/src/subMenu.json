@@ -79,6 +79,19 @@
     "Text": "园区管理",
     "Url": "/productarea"
     }
+    ,{
+      "ParentId": null,
+      "Id": "301f84d3-5a77-4b30-92c4-9c723ed29301",
+      "Text": "流程管理",
+      "Url": null
+    }
+,{
+    "Id": "48132b32-8ad2-4d0a-9c25-28967496255e",
+    "ParentId": "301f84d3-5a77-4b30-92c4-9c723ed29301",
+    "Text": "表单",
+    "Url": "/form"
+    }
+
 
 
 

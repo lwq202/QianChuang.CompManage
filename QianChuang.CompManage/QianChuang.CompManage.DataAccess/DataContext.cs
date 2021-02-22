@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using QianChuang.CompManage.Model.Const;
+using QianChuang.CompManage.Model.Flow;
 using QianChuang.CompManage.Model.Framework;
 using QianChuang.CompManage.Model.Product;
 using WalkingTec.Mvvm.Core;
@@ -31,6 +33,15 @@ namespace QianChuang.CompManage.DataAccess
         public DbSet<ProductArea> ProductAreas { get; set; }
         public DbSet<ProductInfo> ProductInfos { get; set; }
         public DbSet<ProductAreaInfo> ProductAreaInfos { get; set; }
+        #endregion
+
+        #region 流程组件
+
+        public DbSet<FlowInstance> FlowInstances { get; set; }
+        public DbSet<FlowInstanceOperationHistory> FlowInstanceOperationHistories { get; set; }
+        public DbSet<FlowInstanceTransitionHistory> FlowInstanceTransitionHistories { get; set; }
+        public DbSet<FlowScheme> FlowSchemes { get; set; }
+        public DbSet<Form> Forms { get; set; }
         #endregion
 
         public DataContext(string cs, DBTypeEnum dbtype)

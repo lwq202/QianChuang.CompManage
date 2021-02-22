@@ -1,0 +1,56 @@
+﻿<%-- 
+Name: API接口
+Author: yubaolee
+Description: 创建vue中api
+--%>
+<%@ CodeTemplate Language="C#" TargetLanguage="C#" Debug="False" Encoding="utf-8" Description="添加模块" %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="Context"
+Description="连接的数据库" %>
+<%@ Property Name="ModuleName" Type="String" Category="Context" Description="模块名称" %>
+
+<%@ Map Name="CSharpAlias" Src="System-CSharpAlias" Description="System to C# Type Map" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+
+import request from '@/utils/request'
+
+export function getList(params) {
+  return request({
+    url: '/<%=StringUtil.ToCamelCase(ModuleName)%>s/load',
+    method: 'get',
+    params
+  })
+}
+
+export function loadForRole(roleId) {
+  return request({
+    url: '/<%=StringUtil.ToCamelCase(ModuleName)%>s/loadForRole',
+    method: 'get',
+    params: { appId: '', firstId: roleId }
+  })
+}
+
+export function add(data) {
+  return request({
+    url: '/<%=StringUtil.ToCamelCase(ModuleName)%>s/add',
+    method: 'post',
+    data
+  })
+}
+
+export function update(data) {
+  return request({
+    url: '/<%=StringUtil.ToCamelCase(ModuleName)%>s/update',
+    method: 'post',
+    data
+  })
+}
+
+export function del(data) {
+  return request({
+    url: '/<%=StringUtil.ToCamelCase(ModuleName)%>s/delete',
+    method: 'post',
+    data
+  })
+}
+

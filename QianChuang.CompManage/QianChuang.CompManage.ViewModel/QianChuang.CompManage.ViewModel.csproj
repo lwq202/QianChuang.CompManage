@@ -7,7 +7,8 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\QianChuang.CompManage.Helper\QianChuang.CompManage.Helper.csproj" />
     <ProjectReference Include="..\QianChuang.CompManage.Model\QianChuang.CompManage.Model.csproj" />
-  </ItemGroup >
+  </ItemGroup>
 </Project>
 

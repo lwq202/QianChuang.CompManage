@@ -19,6 +19,302 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstance", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ActivityId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ActivityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ActivityType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DbName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FlowLevel")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FrmContentData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmContentParse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("FrmType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsFinish")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MakerList")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrgId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreviousId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SchemeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("FrmId");
+
+                    b.HasIndex("SchemeId");
+
+                    b.ToTable("FlowInstance");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstanceOperationHistory", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreateUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstanceId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("InstanceId");
+
+                    b.ToTable("FlowInstanceOperationHistory");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstanceTransitionHistory", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromNodeId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromNodeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromNodeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstanceId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsFinish")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ToNodeId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToNodeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToNodeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransitionState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("InstanceId");
+
+                    b.ToTable("FlowInstanceTransitionHistory");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowScheme", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AuthorizeType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DeleteMark")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrmId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FrmType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrgId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeCanUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeVersion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SortCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FlowScheme");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.Form", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContentData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContentParse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DbName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DeleteMark")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Fields")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FrmType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrgId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SortCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("WebId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FlowForm");
+                });
+
             modelBuilder.Entity("QianChuang.CompManage.Model.Framework.FrameworkLog", b =>
                 {
                     b.Property<int>("ID")
@@ -185,6 +481,9 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("CellPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreateBy")
@@ -720,7 +1019,28 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                             ID = new Guid("55555555-5555-5555-5555-555555555555"),
                             CreateBy = "初始化数据",
                             RoleCode = "015",
-                            RoleName = "支撑"
+                            RoleName = "设立执行人"
+                        },
+                        new
+                        {
+                            ID = new Guid("66666666-6666-6666-6666-666666666666"),
+                            CreateBy = "初始化数据",
+                            RoleCode = "016",
+                            RoleName = "客户"
+                        },
+                        new
+                        {
+                            ID = new Guid("77777777-7777-7777-7777-777777777777"),
+                            CreateBy = "初始化数据",
+                            RoleCode = "017",
+                            RoleName = "代理商"
+                        },
+                        new
+                        {
+                            ID = new Guid("88888888-8888-8888-8888-888888888888"),
+                            CreateBy = "初始化数据",
+                            RoleCode = "018",
+                            RoleName = "主办会计"
                         });
                 });
 
@@ -853,6 +1173,41 @@ namespace QianChuang.CompManage.DataAccess.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PersistedGrants");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstance", b =>
+                {
+                    b.HasOne("QianChuang.CompManage.Model.Flow.Form", "Frm")
+                        .WithMany()
+                        .HasForeignKey("FrmId");
+
+                    b.HasOne("QianChuang.CompManage.Model.Flow.FlowScheme", "Scheme")
+                        .WithMany()
+                        .HasForeignKey("SchemeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Frm");
+
+                    b.Navigation("Scheme");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstanceOperationHistory", b =>
+                {
+                    b.HasOne("QianChuang.CompManage.Model.Flow.FlowInstance", "Instance")
+                        .WithMany()
+                        .HasForeignKey("InstanceId");
+
+                    b.Navigation("Instance");
+                });
+
+            modelBuilder.Entity("QianChuang.CompManage.Model.Flow.FlowInstanceTransitionHistory", b =>
+                {
+                    b.HasOne("QianChuang.CompManage.Model.Flow.FlowInstance", "Instance")
+                        .WithMany()
+                        .HasForeignKey("InstanceId");
+
+                    b.Navigation("Instance");
                 });
 
             modelBuilder.Entity("QianChuang.CompManage.Model.Framework.FrameworkOrg", b =>
