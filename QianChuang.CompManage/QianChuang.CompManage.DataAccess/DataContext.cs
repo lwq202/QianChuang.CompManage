@@ -37,11 +37,11 @@ namespace QianChuang.CompManage.DataAccess
 
         #region 流程组件
 
-        public DbSet<FlowInstance> FlowInstances { get; set; }
-        public DbSet<FlowInstanceOperationHistory> FlowInstanceOperationHistories { get; set; }
-        public DbSet<FlowInstanceTransitionHistory> FlowInstanceTransitionHistories { get; set; }
-        public DbSet<FlowScheme> FlowSchemes { get; set; }
-        public DbSet<Form> Forms { get; set; }
+        //public DbSet<FlowInstance> FlowInstances { get; set; }
+        //public DbSet<FlowInstanceOperationHistory> FlowInstanceOperationHistories { get; set; }
+        //public DbSet<FlowInstanceTransitionHistory> FlowInstanceTransitionHistories { get; set; }
+        //public DbSet<FlowScheme> FlowSchemes { get; set; }
+        //public DbSet<Form> Forms { get; set; }
         #endregion
 
         public DataContext(string cs, DBTypeEnum dbtype)
