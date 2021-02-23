@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using QianChuang.CompManage.Model.Const;
-using QianChuang.CompManage.Model.Flow;
 using QianChuang.CompManage.Model.Framework;
 using QianChuang.CompManage.Model.Product;
 using WalkingTec.Mvvm.Core;
