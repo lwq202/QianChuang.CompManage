@@ -5,15 +5,14 @@
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
  </PropertyGroup>
 
+
   <ItemGroup>
-    <Compile Remove="ProductForm\**" />
-    <EmbeddedResource Remove="ProductForm\**" />
-    <None Remove="ProductForm\**" />
+    <PackageReference Include="WalkingTec.Mvvm.Core" Version="5.0.4" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="WalkingTec.Mvvm.Core" Version="5.0.4" />
+    <Folder Include="ProductForm\" />
   </ItemGroup>
 </Project>
 

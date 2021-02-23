@@ -5,12 +5,6 @@
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="WorkflowCore" Version="3.3.5" />
-    <PackageReference Include="WorkflowCore.Persistence.EntityFramework" Version="3.1.1" />
-    <PackageReference Include="WorkflowCore.Persistence.SqlServer" Version="3.3.0" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\QianChuang.CompManage.Helper\QianChuang.CompManage.Helper.csproj" />

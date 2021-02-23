@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QianChuang.CompManage.ViewM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QianChuang.CompManage.Test", "QianChuang.CompManage.Test\QianChuang.CompManage.Test.csproj", "{E1CC980B-EA88-4BC2-8192-ECCDEBFC9639}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QianChuang.CompManage.Helper", "QianChuang.CompManage.Helper\QianChuang.CompManage.Helper.csproj", "{DD33863F-DB86-4936-8417-27B29CF9EBCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QianChuang.CompManage.Helper", "QianChuang.CompManage.Helper\QianChuang.CompManage.Helper.csproj", "{DD33863F-DB86-4936-8417-27B29CF9EBCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

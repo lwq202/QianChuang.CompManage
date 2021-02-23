@@ -14,7 +14,6 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using WalkingTec.Mvvm.Core.Support.FileHandlers;
 using WalkingTec.Mvvm.Mvc;
-using WalkingTec.Mvvm.Mvc.Helper;
 
 
 namespace QianChuang.CompManage
@@ -64,8 +63,7 @@ namespace QianChuang.CompManage
                 //设置用户权限
                 //options.DataPrivileges = DataPrivilegeSettings();
             });
-            
-            services.AddWorkflow(x => x.UseSqlServer(ConfigRoot.GetSection("Connections:0")["Value"], true, true));
+
             //services.AddSpaStaticFiles(configuration =>
             //{
             //    configuration.RootPath = "ClientApp/build";
